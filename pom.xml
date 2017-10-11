@@ -150,33 +150,33 @@
 			<version>1.0</version>
 		</dependency> -->
 		<dependency>
-			<groupId>MDSDcourse</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>j3dcore</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>MDSDcourse</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>j3dutils</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>MDSDcourse</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>jogamp-fat</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>MDSDcourse</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>Loader3DS1_2</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>MDSDcourse</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>StarfireExt</artifactId>
 			<version>1.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>vecmath</groupId>
+			<groupId>MDSDProject</groupId>
 			<artifactId>vecmath</artifactId>
 			<version>1.0</version>
 		</dependency>
