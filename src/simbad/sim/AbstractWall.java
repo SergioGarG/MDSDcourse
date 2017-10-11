@@ -2,10 +2,12 @@ package simbad.sim;
 
 import javax.vecmath.Vector3d;
 
+import project.Point;
+
 public abstract class AbstractWall extends Wall {
 
-	public AbstractWall(Vector3d pos ,float length,float height ,EnvironmentDescription wd) {
-		super(pos, length, height, wd);
+	public AbstractWall(Point pos, float length, float height, EnvironmentDescription wd) {
+		super(new Vector3d(pos.getX(), 0, pos.getZ()), length, height, wd);
 	}
 
 	public abstract Float getP1x();

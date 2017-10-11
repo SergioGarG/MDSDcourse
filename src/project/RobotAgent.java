@@ -5,26 +5,26 @@ import javax.vecmath.Vector3d;
 import simbad.sim.Agent;
 import simbad.sim.RobotFactory;
 
-public class RobotAgent extends Agent  {
+public class RobotAgent extends Agent {
 
-//	private String currentMode;
+	// private String currentMode;
 
-	private double MIN_DIST=0.1;
-	private Vector3d destination;
+	private double MIN_DIST = 0.1;
+	private Point destination;
 
 	private SimulatorController controller;
 
-	public RobotAgent(Vector3d position, String name) {
-		super(position, name);
+	public RobotAgent(Point position, String name) {
+		super(new Vector3d(position.getX(), 0, position.getZ()), name);
 
-		this.destination = new Vector3d(position.getX(), position.getY(), position.getZ());
+		this.destination = position;
 		// Add bumpers
 		RobotFactory.addBumperBeltSensor(this, 12);
 		// Add sonars
 		RobotFactory.addSonarBeltSensor(this, 4);
 	}
 
-	public void setDestination(Vector3d destination) {
+	public void setDestination(Point destination) {
 		this.destination = destination;
 	}
 
@@ -44,17 +44,17 @@ public class RobotAgent extends Agent  {
 	 */
 	public void performBehavior() {
 
-		System.out.println("robot: "+this.getName()+"DESTINATION AAAA: "+destination+" current location"+this.getPosition());
+		System.out.println("robot: " + this.getName() + "DESTINATION AAAA: " + destination + " current location"
+				+ this.getPosition());
 		Vector3d position = this.getPosition();
-		
-		
+
 		if (!isAtPosition(this.destination)) {
-			double angle=-Math.atan2((destination.getZ() - position.getZ()),(destination.getX() - position.getX()))* 180 / Math.PI;
-			
+			double angle = -Math.atan2((destination.getZ() - position.z), (destination.getX() - position.x)) * 180
+					/ Math.PI;
+
 			this.rotateY(angle);
 			this.setTranslationalVelocity(1);
-		}
-		else{
+		} else {
 			this.setTranslationalVelocity(0);
 			this.setRotationalVelocity(0);
 		}
@@ -89,11 +89,11 @@ public class RobotAgent extends Agent  {
 		 */
 
 	}
-	
-	public boolean isAtPosition(Vector3d dest){
+
+	public boolean isAtPosition(Point dest) {
 		Vector3d position = this.getPosition();
-		
-		if ((Math.abs(dest.getZ() - position.getZ()))>MIN_DIST || ((Math.abs(dest.getX() - position.getX()))>MIN_DIST)){
+
+		if ((Math.abs(dest.getZ() - position.z)) > MIN_DIST || ((Math.abs(dest.getX() - position.x)) > MIN_DIST)) {
 			return false;
 		}
 		return true;

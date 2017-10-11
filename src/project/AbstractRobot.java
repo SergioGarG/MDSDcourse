@@ -1,21 +1,19 @@
 package project;
 
-import javax.vecmath.Vector3d;
-
 public abstract class AbstractRobot {
 
 	private RobotAgent agent;
 
-	public AbstractRobot(Vector3d position, String name) {
+	public AbstractRobot(Point position, String name) {
 		agent = new RobotAgent(position, name);
 	}
 
-	public void setDestination(Vector3d destination) {
+	public void setDestination(Point destination) {
 		agent.setDestination(destination);
 	}
 
-	public Vector3d getPosition() {
-		return agent.getPosition();
+	public Point getPosition() {
+		return new Point(agent.getPosition().x, agent.getPosition().z);
 	}
 
 	protected void setController(SimulatorController controller) {
@@ -30,7 +28,7 @@ public abstract class AbstractRobot {
 		return agent.getName();
 	}
 
-	public boolean isAtPosition(Vector3d dest) {
+	public boolean isAtPosition(Point dest) {
 		return agent.isAtPosition(dest);
 	}
 }

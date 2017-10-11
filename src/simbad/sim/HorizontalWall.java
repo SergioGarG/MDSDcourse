@@ -3,7 +3,8 @@ package simbad.sim;
 import java.awt.Color;
 
 import javax.vecmath.Color3f;
-import javax.vecmath.Vector3d;
+
+import project.Point;
 
 
 /**
@@ -17,7 +18,7 @@ public class HorizontalWall extends AbstractWall {
 	private static final float height = 2;
 
 	public HorizontalWall(Float p1x, Float p1z, Float p2z, EnvironmentDescription wd) {
-		super(new Vector3d(p1x, 0, p1z+(p2z - p1z)/2), p2z - p1z, height,  wd);
+		super(new Point(p1x, p1z+(p2z - p1z)/2), p2z - p1z, height,  wd);
 		setColor(new Color3f(Color.RED));
 		this.rotate90(1);
 		this.p1x=p1x;
