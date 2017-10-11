@@ -125,10 +125,15 @@
 
 	<repositories>
 		<repository>
-			<id>lib</id>
-			<url>${project.basedir}/lib</url>
+			<id>MDSDProject</id>
+			<url>https://raw.github.com/MDSDProject/MDSDProject/mvn-repo/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 		</repository>
 	</repositories>
+	
 	<dependencies>
 		<!-- <dependency> <groupId>javax.media</groupId> <artifactId>jmf</artifactId> 
 			<version>2.1.1e</version> </dependency> <dependency> <groupId>java3d</groupId> 
@@ -138,56 +143,42 @@
 			<artifactId>vecmath</artifactId> <version>1.3.1</version> </dependency> <dependency> 
 			<groupId>net.java.dev.jogl</groupId> <artifactId>jogl</artifactId> <version>1.1.1-rc6</version> 
 			</dependency> -->
-
+<!-- 
 		<dependency>
-			<groupId>j3d-vrml97</groupId>
-			<artifactId>j3d-vrml97.jar</artifactId>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>j3d-vrml97</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/j3d-vrml97.jar</systemPath>
+		</dependency> -->
+		<dependency>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>j3dcore</artifactId>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
-			<groupId>j3dcore</groupId>
-			<artifactId>j3dcore.jar</artifactId>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>j3dutils</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/j3dcore.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>j3dutils</groupId>
-			<artifactId>j3dutils.jar</artifactId>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>jogamp-fat</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/j3dutils.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>jogamp-fat</groupId>
-			<artifactId>jogamp-fat.jar</artifactId>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>Loader3DS1_2</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/jogamp-fat.jar</systemPath>
 		</dependency>
 		<dependency>
-			<groupId>Loader3DS1_2</groupId>
-			<artifactId>Loader3DS1_2.jar</artifactId>
+			<groupId>MDSDcourse</groupId>
+			<artifactId>StarfireExt</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/Loader3DS1_2.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>StarfireExt</groupId>
-			<artifactId>StarfireExt.jar</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/StarfireExt.jar</systemPath>
 		</dependency>
 
 		<dependency>
 			<groupId>vecmath</groupId>
-			<artifactId>vecmath.jar</artifactId>
+			<artifactId>vecmath</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/vecmath.jar</systemPath>
 		</dependency>
 	</dependencies>
 
