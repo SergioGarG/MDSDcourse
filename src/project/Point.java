@@ -26,6 +26,11 @@ public class Point {
 		this.z = z;
 	}
 
+	public double dist(Point b) {
+		double dx = this.x - b.x;
+		double dz = this.z - b.z;
+		return Math.sqrt(dx*dx + dz*dz);
+	}
 	
 	public String toString() {
 		return "x=" + x + "\t z=" + z;
