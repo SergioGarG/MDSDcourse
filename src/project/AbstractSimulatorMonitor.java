@@ -35,10 +35,10 @@ public abstract class AbstractSimulatorMonitor<R extends AbstractRobotSimulator>
 	}
 
 	/**
-	 * Called every time a change occurred in the simulator
+	 * Called every time step for every robot registered in the environment
 	 * 
 	 * @param robot
-	 *            the robot that notified an update in the simulator
+	 *            the robot whose state has been updated by the simulator
 	 */
 	public abstract void update(AbstractRobotSimulator robot);
 }
