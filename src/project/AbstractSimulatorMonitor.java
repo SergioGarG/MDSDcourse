@@ -40,5 +40,5 @@ public abstract class AbstractSimulatorMonitor<R extends AbstractRobotSimulator>
 	 * @param robot
 	 *            the robot whose state has been updated by the simulator
 	 */
-	public abstract void update(AbstractRobotSimulator robot);
+	public abstract void update(R robot);
 }

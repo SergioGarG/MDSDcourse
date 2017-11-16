@@ -5,15 +5,15 @@ import javax.vecmath.Vector3d;
 import simbad.sim.Agent;
 import simbad.sim.RobotFactory;
 
-public class RobotAgent extends Agent {
+public class RobotAgent<R extends AbstractRobotSimulator> extends Agent {
 
 	// private String currentMode;
 
 	private double MIN_DIST = 0.1;
 	private Point destination;
 
-	private AbstractRobotSimulator agentSimulator;
-	private AbstractSimulatorMonitor<? extends AbstractRobotSimulator> controller;
+	private R agentSimulator;
+	private AbstractSimulatorMonitor<R> controller;
 
 	public RobotAgent(Point position, String name) {
 		super(new Vector3d(position.getX(), 0, position.getZ()), name);
@@ -29,7 +29,7 @@ public class RobotAgent extends Agent {
 		this.destination = destination;
 	}
 
-	public void setController(AbstractSimulatorMonitor<? extends AbstractRobotSimulator> controller) {
+	public void setController(AbstractSimulatorMonitor<R> controller) {
 		this.controller = controller;
 
 	}
@@ -75,7 +75,7 @@ public class RobotAgent extends Agent {
 		return agentSimulator;
 	}
 
-	protected <R extends AbstractRobotSimulator> void setAgentSimulator(R agentSimulator) {
+	protected void setAgentSimulator(R agentSimulator) {
 		this.agentSimulator = agentSimulator;
 	}
 }
