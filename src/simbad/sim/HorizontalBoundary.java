@@ -43,13 +43,15 @@ public class HorizontalBoundary extends Boundary {
 	private Float p2z;
 	private static final float height = 2;
 
-	public HorizontalBoundary(Float p1x, Float p1z, Float p2z, EnvironmentDescription wd) {
+	
+	public HorizontalBoundary(Float p1x, Float p1z, Float p2z, EnvironmentDescription wd, Color c) {
 		super(new Vector3d(p1x, 0, p1z+(p2z - p1z)/2), new Vector3f(p2z - p1z, height, thickness), wd);
-		setColor(new Color3f(Color.GRAY));
+		setColor(new Color3f(c));
 		this.rotate90(1);
 		this.p1x=p1x;
 		this.p1z=p1z;
 		this.p2z=p2z;
+		wd.add(this);
 	}
 
 	public HorizontalBoundary(Vector3d pos, float length, float width, float height, EnvironmentDescription wd) {

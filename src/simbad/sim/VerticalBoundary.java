@@ -43,12 +43,13 @@ public class VerticalBoundary extends Boundary {
 	private Float p1z;
 	private static final float height = 2;
 
-	public VerticalBoundary(Float p1z, Float p1x, Float p2x, EnvironmentDescription wd) {
+	public VerticalBoundary(Float p1z, Float p1x, Float p2x, EnvironmentDescription wd, Color c) {
 		super(new Vector3d(p1x+(p2x - p1x)/2, 0, p1z), new Vector3f(p2x - p1x, height, thickness), wd);
-		setColor(new Color3f(Color.GRAY));
+		setColor(new Color3f(c));
 		this.p1x=p1x;
 		this.p1z=p1z;
 		this.p2x=p2x;
+		wd.add(this);
 	}
 
 	public VerticalBoundary(Vector3d pos, float length, float width, float height, EnvironmentDescription wd) {

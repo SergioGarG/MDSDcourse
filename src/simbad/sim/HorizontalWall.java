@@ -19,14 +19,15 @@ public class HorizontalWall extends AbstractWall {
 	private Float p2z;
 	private static final float height = 2;
 
-	public HorizontalWall(Float p1x, Float p1z, Float p2z, EnvironmentDescription wd) {
+	public HorizontalWall(Float p1x, Float p1z, Float p2z, EnvironmentDescription wd, Color c) {
 		super(new Point(p1x, p1z+(p2z - p1z)/2), p2z - p1z, height,  wd);
-		setColor(new Color3f(Color.RED));
+		setColor(new Color3f(c));
 		this.rotate90(1);
 		this.p1x=p1x;
 		this.p1z=p1z;
 		this.p2z=p2z;
 		this.setCanBeTraversed(false);
+		wd.add(this);
 	}
 
 
