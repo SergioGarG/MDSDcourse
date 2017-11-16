@@ -12,7 +12,8 @@ public class RobotAgent extends Agent {
 	private double MIN_DIST = 0.1;
 	private Point destination;
 
-	private SimulatorController controller;
+	private AbstractRobotSimulator agentSimulator;
+	private AbstractSimulatorMonitor<? extends AbstractRobotSimulator> controller;
 
 	public RobotAgent(Point position, String name) {
 		super(new Vector3d(position.getX(), 0, position.getZ()), name);
@@ -28,7 +29,7 @@ public class RobotAgent extends Agent {
 		this.destination = destination;
 	}
 
-	public void setController(SimulatorController controller) {
+	public void setController(AbstractSimulatorMonitor<? extends AbstractRobotSimulator> controller) {
 		this.controller = controller;
 
 	}
@@ -44,8 +45,6 @@ public class RobotAgent extends Agent {
 	 */
 	public void performBehavior() {
 
-		System.out.println("robot: " + this.getName() + "DESTINATION AAAA: " + destination + " current location"
-				+ this.getPosition());
 		Vector3d position = this.getPosition();
 
 		if (!isAtPosition(this.destination)) {
@@ -59,34 +58,7 @@ public class RobotAgent extends Agent {
 			this.setRotationalVelocity(0);
 		}
 
-		controller.update();
-		// this.rotate
-		// this.rotateY(2);
-		// this.getRotation().set(cross);
-		// if (y != desiredy) {
-		// System.out.println("orientation not correct");
-		// this.getRotation().get(m);
-		// m.rotY(desiredy-y);
-		// m.rotY(2);
-		// this.getRotation().set(m);
-		// }
-		// if()
-		// this.controller.update();
-		// moveToPosition(new Vector3d(new Vector3d(1, 1, 1)));
-		// perform the following actions every 5 virtual seconds
-		/*
-		 * if(this.getCounter() % 5 == 0) { if(this.collisionDetected()) {
-		 * this.currentMode = "avoidObstacle"; } else { this.currentMode =
-		 * "goAround"; }
-		 * 
-		 * if(this.currentMode == "goAround") { // the robot's speed is always
-		 * 0.5 m/s this.setTranslationalVelocity(0.5);
-		 * 
-		 * // frequently change orientation if ((getCounter() % 100) == 0) {
-		 * setRotationalVelocity(Math.PI / 2 * (0.5 - Math.random())); } } else
-		 * { // don't move this.setTranslationalVelocity(0); // rotate only
-		 * until obstacle is not there setRotationalVelocity(Math.PI / 2); } }
-		 */
+		controller.update(agentSimulator);
 
 	}
 
@@ -97,5 +69,13 @@ public class RobotAgent extends Agent {
 			return false;
 		}
 		return true;
+	}
+
+	protected AbstractRobotSimulator getAgentSimulator() {
+		return agentSimulator;
+	}
+
+	protected <R extends AbstractRobotSimulator> void setAgentSimulator(R agentSimulator) {
+		this.agentSimulator = agentSimulator;
 	}
 }

@@ -32,8 +32,6 @@ import javax.vecmath.Color3f;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
-import project.Point;
-
 /**
  * A wall which can be put in the environnement.
  */

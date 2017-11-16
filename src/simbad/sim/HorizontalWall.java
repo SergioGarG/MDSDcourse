@@ -2,7 +2,9 @@ package simbad.sim;
 
 import java.awt.Color;
 
+import javax.media.j3d.BoundingSphere;
 import javax.vecmath.Color3f;
+import javax.vecmath.Point3d;
 
 import project.Point;
 
@@ -24,6 +26,7 @@ public class HorizontalWall extends AbstractWall {
 		this.p1x=p1x;
 		this.p1z=p1z;
 		this.p2z=p2z;
+		this.setCanBeTraversed(false);
 	}
 
 
@@ -43,4 +46,20 @@ public class HorizontalWall extends AbstractWall {
 		return p2z;
 	}
 
+protected boolean intersect( BoundingSphere obj) {
+		
+		Point3d center=new Point3d();
+		obj.getCenter(center);
+//		 double radiussq = bs.getRadius()*bs.getRadius(); bb.getLower(p1);
+	//	 * bb.getUpper(p2); bs.getCenter(p3); double xmin = Math.min(p1.x,p2.x);
+		
+		double zmin=center.getZ()-obj.getRadius();
+		double zmax=center.getZ()+obj.getRadius();
+		double xmin=center.getX()-obj.getRadius();
+		double xmax=center.getX()+obj.getRadius();
+		
+		
+		return (((p1x>xmin && p1x<xmax) || (p1x<xmin && p1x>xmax)) && (((center.getZ()<p1z) &&(center.getZ()>p2z)) || (((center.getZ()>p1z) &&(center.getZ()<p2z)))));
+		
+	}
 }

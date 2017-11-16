@@ -6,5 +6,5 @@ import simbad.sim.StaticObject;
 
 public interface BuildingInterface {
 
-	public Set<StaticObject> gerObjects();
+	public Set<StaticObject> getObjects();
 }

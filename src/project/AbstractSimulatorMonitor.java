@@ -6,9 +6,9 @@ import simbad.gui.Simbad;
 import simbad.sim.EnvironmentDescription;
 import simbad.sim.Simulator;
 
-public abstract class SimulatorController {
+public abstract class AbstractSimulatorMonitor<R extends AbstractRobotSimulator> {
 
-	public SimulatorController(BuildingInterface b, Set<? extends AbstractRobot> robots, EnvironmentDescription e) {
+	public AbstractSimulatorMonitor(Set<R> robots, EnvironmentDescription e) {
 		System.out.println("*********************");
 		// request antialising so that diagonal lines are not "stairy"
 		System.setProperty("j3d.implicitAntialiasing", "true");
@@ -17,9 +17,9 @@ public abstract class SimulatorController {
 		// EnvironmentDescription environment = new
 		// ExampleEnvironment(b.gerObjects());
 
-		b.gerObjects().stream().forEach(o -> e.add(o));
 		robots.forEach((r) -> {
 			e.add(r.getAgent());
+			r.getAgent().setAgentSimulator(r);
 			r.setController(this);
 		});
 
@@ -34,5 +34,11 @@ public abstract class SimulatorController {
 		sim.startSimulation();
 	}
 
-	public abstract void update();
+	/**
+	 * Called every time a change occurred in the simulator
+	 * 
+	 * @param robot
+	 *            the robot that notified an update in the simulator
+	 */
+	public abstract void update(AbstractRobotSimulator robot);
 }
